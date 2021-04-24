@@ -7,7 +7,7 @@ use stm32g0xx_hal::{
     rcc::Rcc,
     stm32::{
         TIM2,
-        // RCC,
+        RCC,
         tim2::RegisterBlock as Tim2Rb,
     },
 };
