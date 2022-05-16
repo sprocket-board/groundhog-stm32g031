@@ -17,10 +17,10 @@ cortex-m-rtic = "0.5.5"
 embedded-hal = "0.2.4"
 
 [dependencies.stm32g0xx-hal]
-version = "0.1.0"
+path = "../../hal"
 features = ["stm32g031"]
 
 [dependencies.groundhog]
-version = "0.1"
+version = "0.2"
 
 [features]

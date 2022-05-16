@@ -16,6 +16,18 @@ static TIMER_PTR: AtomicPtr<Tim2Rb> = AtomicPtr::new(core::ptr::null_mut());
 
 pub struct GlobalRollingTimer;
 
+impl Default for GlobalRollingTimer {
+    fn default() -> Self {
+        Self::new()
+    }
+}
+
+impl Clone for GlobalRollingTimer {
+    fn clone(&self) -> Self {
+        Self::new()
+    }
+}
+
 impl GlobalRollingTimer {
     pub const fn new() -> Self {
         Self
@@ -84,6 +96,11 @@ impl RollingTimer for GlobalRollingTimer {
         } else {
             0
         }
+    }
+
+    fn is_initialized(&self) -> bool {
+        let putter = TIMER_PTR.load(Ordering::SeqCst);
+        putter != core::ptr::null_mut()
     }
 }
 
